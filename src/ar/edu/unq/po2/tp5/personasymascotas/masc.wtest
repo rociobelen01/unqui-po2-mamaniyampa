@@ -1,0 +1,38 @@
+import persona.*
+import mascota.*
+
+describe "Tests de Personas y Mascotas" {
+    // 1. Definimos las referencias a nivel de describe para que tengan alcance global en el bloque
+    var juan
+    var ana
+    var firulais
+    var michi
+    var seresVivos
+
+    method initialize() {
+        // 2. Inicializamos las variables dentro del initialize (se ejecuta antes de cada test)
+        juan = new Persona(nombre = "Juan", fechaNacimiento = new Date(day=10, month=5, year=1990))
+        ana = new Persona(nombre = "Ana", fechaNacimiento = new Date(day=20, month=8, year=1995))
+        firulais = new Mascota(nombre = "Firulais", raza = "Ovejero")
+        michi = new Mascota(nombre = "Michi", raza = "Siames")
+        
+        seresVivos = [juan, ana, firulais, michi]
+    }   
+    
+    test "Iterar e imprimir nombres polimórficamente" {
+        seresVivos.forEach({ ser => console.println(ser.nombre()) })
+        assert.equals(4, seresVivos.size())
+    }
+}
+
+// ¿Fue necesario distinguir el tipo de objeto? 
+// No, no fue necesario distinguir si el objeto era una Persona o una Mascota durante la iteración
+// Este mecanismo se llama Polimorfismo. Permite que objetos de distintas clases sean tratados de forma 
+// homogénea por un observador (en este caso, la colección), siempre que compartan un protocolo común, es decir, que entiendan los mismos mensajes
+
+// Herencia vs. Interfaces 
+// Asegurar mediante herencia: se podría asegurar creando una superclase común (SerNombrado) que defina el atributo o método getName()
+// Si Persona ya tiene una superclase, como en java no existe la herencia múltiple, si Persona ya es subclase de otra clase que no se puede modificar, no podria
+//  hacer que herede de una nueva superclase común con Mascota. La solución es el uso de Interfaces. Una interfaz define un contrato de métodos comunes que clases
+// no relacionadas pueden implementar . En Java, podriamos tener la interface Nombrable { String getName(); } y que ambas clases la implementen, permitiendo
+//  procesarlas de manera polimórfica sin compartir una jerarquía de herencia.
