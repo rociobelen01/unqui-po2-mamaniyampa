@@ -1,0 +1,14 @@
+
+2.
+2.1 SPR (Principio de responsabiliad unica)
+Cada clase tiene su propio proposito; Clientesolo maneja y conoce sus propias finanzas. SolicitudCredito encapsula las reglas de verificacion para el credito y Banco coordina el registro de clientes y solicitudes.
+
+2.2 OCP (Principio de abierto/cerrado)
+Si en algun momento el Banco quiere agregar algun otro tipo de credito, ese credito puede implementar la clase abstracta SolicitudCredito sin modificar ninguna parte del codigo.
+
+
+2.3 LSP (Principio de sustitucion de Liskov)
+Al tener al Banco con una lista que puede tener SolicitudCredito, cualquier clase que extienda SolicitudCredito puede agregarse a la lista y el Banco lo maneja de manera indistinta.
+
+2.4 DIP (Principio de inversion de dependencias)
+Banco depende de la abstraccion SolicitudCredito y no de sus subcalses CreditoPersonal y CreditoHipotecario.
