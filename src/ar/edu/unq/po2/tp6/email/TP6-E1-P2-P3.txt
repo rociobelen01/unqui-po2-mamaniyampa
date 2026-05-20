@@ -1,0 +1,20 @@
+2. Detecte las violaciones a los principios SOLID.
+2.1 Violación del Dependency Inversion Principle (DIP)
+El DIP establece que los módulos de alto nivel no deben depender de módulos de bajo nivel, sino que ambos deben depender de abstracciones. En el codigo, la clase ClienteEmail declara explicitamente un atributo de tipo ServicioPop (concreción) en lugar de utilizar la interfaz IServidor (abstracción). Esto genera un alto acoplamiento, impidiendo que el cliente puede trabajar con otros tipos de servicios sin modificar su codigo.
+
+2.2 Violación del Interface Segregation Principle. (ISP)
+Este principio indica que los clientes no deben ser forzados a depender de interfaces que no utilizan. La interfaz IServidor es una "interfaz gorda" porque mezcla operaciones de correo (enviar, recibir) con operaciones administrativas (realizarBackUp, resetear). Como consecuencia, ServidorPop se ve obligado a implementar métodos que "no corresponden" a su naturaleza, devolviendo valores nulos o vacíos para cumplir con el contrato
+
+2.3 Single Responsibility Principle (SRP)
+El principio establece que una clase debe tener una sola razón para cambiar. La interface IServidor asume muchas responsabilidades, la comunicacion de datos y administracion/matntenimiento del sistema.
+
+3. Indique las soluciones que deben llevarse a cabo.
+3.1 Inversión de Dependencias (DIP)
+Cambiar el tipo del atributo en ClienteEMail, en lugar de ServidorPop servidor, debe ser IServidorOperativo servidor. Esto permite que el cliente sea polimórfico respecto a cualquier servidor que cumpla con el contrato operativo.
+
+3.2 Segregación de la Interfaz (ISP)
+Se debe dividir IServidor en interfaces más pequeñas como:
+- IServidorOperativo: Con los métodos conectar, enviar y recibirNuevos.
+- IServidorAdministrativo: Con los métodos realizarBackUp, resetear y tazaDeTransferencia.
+De esta forma, ServidorPop solo implementará IServidorOperativo.
+
