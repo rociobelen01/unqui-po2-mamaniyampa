@@ -1,0 +1,43 @@
+Ejercicio 1 - Desde el libro
+Basándose en el capítulo del patrón de diseño del libro Design Patterns de Gamma et al.
+desarrolle los siguientes puntos.
+
+1. En la intención del patrón se indica que el cliente debe poder tratar de manera uniforme tanto a objetos individuales como compuestos. ¿Cómo se logra esto con el patrón Composite?
+- Este trato uniforme se logra a través de la introducción de una clase abstracta (o interfaz) denominada Componente, que actúa como la raíz de la jerarquía. 
+Interfaz Común: Tanto los objetos primitivos (hojas) como los recipientes (Compuestos) heredan de esta clase base y deben implementar su protocolo de mensajes.
+- Polimorfismo: Debido a que ambos tipos de objetos comparte la misma interfaz, el cliente puede enviar un mensaje (como operación()) a cualquier objeto de la estructura sin necesidad de preguntar su tipo.
+- Composición recursiva: El objeto Compuesto mantiene una colección de referencias de tipo Componente. Esto permite que un compuesto contenga tantas hojas como otros compuestos, permitiendo anidar niveles de la forma recursiva y transparente para quien usa la estructura.
+
+2. Explique en que casos aplicaría el patron.
+Es aplicable cuando:
+- Jerarquías Parte-Todo: Se desea representar estructuras de objetos que se agrupan formando un árbol, como el caso de directorio y archivos en un sistema operativo, o tareas y subtareas en un proyecto.
+- Ignorar diferencias: Cuando se busca que los clientes sean capaces de obviar la diferencia entre composiciones de objetos y objetos individuales.
+-Estructuras complejas: En dominios donde los elementos pueden ser simples o complejos (como diagramas gráficos que agrupan líneas y rectángulos, o carteras financieras que agrupan acciones y sub-carteras) y se requiere un procesamiento uniforme.
+
+3. Dentro de las consecuencias, se indica que los clientes deben mantenerse
+simples y no deben ser conscientes si están interactuando con un objeto hoja o una composición. ¿Qué elementos de la programación orientada a objetos hacen posible esto?
+Los elementos que hacen posible esto son:
+- Polimorfismo: Permite que el cliente trate de la misma manera a los distintos objetos que recibe, siempre que cumplan con la interfaz determinada. 
+- Abstracción e interfaces: La definición de un contrato a través de una clase abstracta o interfaz oculta los detalles de implementación. El cliente programa para una interfaz y no para una implementación concreta, desconociendo si la clase que tiene enfrente posee una lista de hijos o no.
+- Encapsulamiento: El compuesto oculta su estructura interna (la colección de hijos). Al cliente solo le interesa el comportamiento expuesto por el componente, logrando un bajo acoplamiento entre la lógica de uso y la estructura de datos.
+- Herencia: Se utiliza para relacionar las clases y garantizar que todas compartan la interfaz de si supertipo, asegurando la compatibilidad necesaria para el tratamiento uniforme.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

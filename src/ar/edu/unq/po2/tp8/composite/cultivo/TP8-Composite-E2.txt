@@ -1,0 +1,18 @@
+Ejercicio 2
+
+1. ¿Qué impacto genera en su diseño el hecho de compartir instancias de parcelas entre composiciones? Es decir, que la misma instancia se encuentre en más de una composición.
+Compartir instancias de componentes entre diferentes composiciones (que un objetos sea "hijo" de varios "padres")
+
+3. Describa las alternativas que puede utilizar para calcular la ganancia anual.
+Relacione las alternativas.
+- Iteración: El objeto compuesto (PorcionMixta) utiliza una estructura de control como un bucle for o foreach para recorrer sus 4 colaboradores, acumulando la suma de sus ganancias y dividiendo.
+- Stream: Se utiliza la API de Streams de Java para mapear los componentes a sus valores numéricos (mapToDouble) y sumarlos en una sola línea de código, lo que aumenta la expresividad y legibilidad del diseño.
+
+4. Explique la discusión sobre quiénes deben implementar las operaciones de agregado y borrado de hijos.
+Consiste en declarar las operaciones de agregado (add) y borrado (remove) en la clase raíz (Componente). Esto permite que el cliente trate a todos los objetos (hojas y compuestos) de manera uniforme, pero sacrifica seguridad, ya que un cliente podria intentar erroneamente agregar un hijo a un cultivo puro de soja.
+
+5. Sobre su implementación, indique los roles que desempeñan cada una de las clases diseñadas en relación al patrón Composite.
+Componente (PorcionProductiva): es la clase abstracta que define el contrato comun. 
+Hojas (Soja o trigo): Elementos primitivos del sistema.
+Compuesto (PorcionMixta): Es el objeto que tiene hijos y define el comportamiento. Almacena a los hijos e implmementa la parte recursiva.
+Cliente: Es cualquier objeto que interactua con la jerarquia enviando mensajes.
