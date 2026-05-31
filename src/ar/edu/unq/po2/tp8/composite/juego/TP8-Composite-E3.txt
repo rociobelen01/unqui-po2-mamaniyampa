@@ -1,0 +1,8 @@
+Ejercicio 3
+
+3. Indique los participantes y roles de aquellos patrones de diseño que utilizó en su
+solución 
+Solo se utilizo el Patrón Composite donde los participantes fueron:
+Componente (Personaje) -> Define el mensaje caminar(Punto destino)
+Hojas      (Caballero e Ingeniero) -> Implementa el comportamiento de caminar 
+Compuesto  (Ejercito) -> Mantiene la colección de tipo Personaje y el método caminar le delega la tarea a cada elemento de la lista de manera recursiva. 
